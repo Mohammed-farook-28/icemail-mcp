@@ -15,10 +15,7 @@ BASE_URL = os.getenv("ICEMAIL_BASE_URL", "https://app.icemail.ai/api/support")
 API_KEY = os.getenv("ICEMAIL_API_KEY", "")
 
 # Initialize FastMCP server
-mcp = FastMCP(
-    "icemail-support-mcp",
-    description="MCP server for IceMail support operations"
-)
+mcp = FastMCP("icemail-support-mcp")
 
 # HTTP client setup
 def get_client() -> httpx.Client:
