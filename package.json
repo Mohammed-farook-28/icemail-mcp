@@ -1,0 +1,19 @@
+{
+  "name": "icemail-mcp",
+  "version": "1.0.0",
+  "description": "Icemail Support MCP Server",
+  "type": "module",
+  "bin": {
+    "icemail-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.24.3",
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3"
+  }
+}
