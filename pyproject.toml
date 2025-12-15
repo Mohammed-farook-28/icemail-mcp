@@ -1,0 +1,17 @@
+[project]
+name = "icemail-mcp"
+version = "1.0.0"
+description = "Icemail Support MCP Server"
+requires-python = ">=3.10"
+dependencies = [
+    "fastmcp",
+    "httpx",
+    "python-dotenv",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+icemail-mcp = "server:mcp.run"
