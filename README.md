@@ -2,6 +2,17 @@
 
 A FastMCP server providing support operations for IceMail - mailbox management, wallet credits, domain configuration, and more.
 
+**Hosted on:** FastMCP Cloud  
+**URL:** `https://diplomatic-lavender-pike.fastmcp.app/mcp/`
+
+---
+
+## 🚀 Quick Start for Users
+
+See [SETUP_GUIDE.md](SETUP_GUIDE.md) for step-by-step instructions.
+
+---
+
 ## Tools Available (23 total)
 
 ### User & Workspace
@@ -39,77 +50,54 @@ A FastMCP server providing support operations for IceMail - mailbox management, 
 - `set_secret_key` - Set 2FA secret keys
 - `set_app_password` - Set app passwords
 
-## Environment Variables
+---
+
+## For Developers
+
+### Local Development
 
 ```bash
-ICEMAIL_BASE_URL=https://app.icemail.ai/api/support  # Optional, this is the default
-ICEMAIL_API_KEY=your_api_key_here                    # Required for authenticated requests
-```
+# Clone the repo
+git clone https://github.com/Mohammed-farook-28/icemail-mcp.git
+cd icemail-mcp
 
-## Local Development
-
-### Install dependencies
-```bash
+# Setup Python environment
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
-```
 
-### Run locally (stdio mode)
-```bash
+# Run locally
 python server.py
 ```
 
-### Run with HTTP transport (for testing)
+### Environment Variables
+
 ```bash
+ICEMAIL_BASE_URL=https://app.icemail.ai/api/support  # Optional (default)
+ICEMAIL_API_KEY=your_api_key                         # For authenticated requests
+LOG_LEVEL=INFO                                       # DEBUG, INFO, WARNING, ERROR
+REQUEST_TIMEOUT=30                                   # Seconds
+MAX_RETRIES=3                                        # Retry count
+```
+
+### Test with FastMCP Inspector
+
+```bash
+source venv/bin/activate
 fastmcp dev server.py
 ```
 
-## Deploy to FastMCP Cloud
+---
 
-1. **Push to GitHub** (if not already done)
+## Deployment
 
-2. **Go to [FastMCP Cloud](https://fastmcp.cloud)**
-   - Sign in with GitHub
-   - Create a new project
-   - Link this repository
+This server is deployed on **FastMCP Cloud**.
 
-3. **Configure deployment**
-   - Entry point: `server.py:mcp`
-   - Add environment variables:
-     - `ICEMAIL_API_KEY` (required)
-     - `ICEMAIL_BASE_URL` (optional)
+To redeploy:
+1. Push changes to GitHub
+2. FastMCP Cloud auto-deploys from main branch
 
-4. **Deploy**
-   - Your server will be available at: `https://your-project.fastmcp.app/mcp`
-
-## Usage with Claude Desktop
-
-Add to your Claude Desktop config (`claude_desktop_config.json`):
-
-### For FastMCP Cloud deployment:
-```json
-{
-  "mcpServers": {
-    "icemail-support": {
-      "url": "https://your-project.fastmcp.app/mcp"
-    }
-  }
-}
-```
-
-### For local development:
-```json
-{
-  "mcpServers": {
-    "icemail-support": {
-      "command": "python",
-      "args": ["/path/to/icemail-mcp/server.py"],
-      "env": {
-        "ICEMAIL_API_KEY": "your_api_key"
-      }
-    }
-  }
-}
-```
+---
 
 ## License
 
